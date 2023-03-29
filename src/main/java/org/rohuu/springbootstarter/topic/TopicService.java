@@ -25,4 +25,14 @@ public class TopicService {
     public void addTopic(Topic topic) {
         topics.add(topic);
     }
+
+    public void updateTopic(String id, Topic topic) {
+        for (int i = 0; i < topics.size(); i++) {
+                Topic topicToUpdate=topics.get(i);
+                if(topicToUpdate.getId().equals(id)){
+                    topics.set(i,topic);
+                    return;
+                }
+        }
+    }
 }
