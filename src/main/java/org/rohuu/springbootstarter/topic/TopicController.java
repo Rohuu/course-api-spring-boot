@@ -1,9 +1,7 @@
 package org.rohuu.springbootstarter.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,10 @@ public class TopicController {
     @RequestMapping("/topics/{id}") // parenthesis is for variable part
     public Topic getTopic(@PathVariable String id){ // @PathVariable tells spring that map above variable in @RequestMapping with the arguments passed which is "id"
         return topicService.getTopic(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/topics")
+    public void addTopic(@RequestBody Topic topic){
+        topicService.addTopic(topic);
     }
 }
